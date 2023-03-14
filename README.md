@@ -1,10 +1,11 @@
 ## Symfony Example ##
 
-### docker init
+### + docker init
     $ docker-compose up --build
 
-### symfony init project through composer
+### + symfony init app through composer
+    $ php bin/console about
 
-### controller
+### - controller
 
-### validator pool
+### - validator pool
