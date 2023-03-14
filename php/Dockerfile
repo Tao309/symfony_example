@@ -38,7 +38,7 @@ RUN ln -snf /usr/share/zoneinfo/${TIMEZONE} /etc/localtime && echo ${TIMEZONE} >
     && printf '[PHP]\ndate.timezone = "%s"\n', ${TIMEZONE} > /usr/local/etc/php/conf.d/tzone.ini \
     && "date"
 
-RUN apt-get install -y openssl
+RUN apt-get install -y openssl && curl -sS https://get.symfony.com/cli/installer | bash && mv /root/.symfony5/bin/symfony /usr/local/bin/symfony
 
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer --version=2.2.4
 
@@ -52,5 +52,7 @@ RUN chmod 600 ~/.ssh/github_rsa && chmod 600 ~/.ssh/  \
     # && ssh -T git@github.com && ssh-keyscan github.com >> ~/.ssh/known_hosts \
     && eval "$(ssh-agent -s)" && ssh-add  ~/.ssh/github_rsa  \
     && chmod -R 777 ./
+
+RUN git config --global user.email "taoman309@gmail.com" && git config --global user.name "Tao309"
 
 WORKDIR /var/www
