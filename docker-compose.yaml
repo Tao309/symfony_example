@@ -1,0 +1,86 @@
+version: "3"
+
+services:
+  nginx:
+    container_name: symfony-example-nginx
+    build:
+      context: ./nginx
+      dockerfile: Dockerfile
+    volumes:
+      - ./www:/var/www
+      - ./logs/nginx:/var/log/nginx
+    ports:
+      - 8085:80
+      - 4046:443
+    working_dir: /var/www/
+    env_file:
+      - .env.nginx
+    depends_on:
+      - php
+    links:
+      - php
+    networks:
+      symfony-example:
+        aliases:
+          - symfony-example
+
+  php:
+    container_name: symfony-example-php
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    build:
+      context: ./php
+      dockerfile: Dockerfile
+      args:
+        TIMEZONE: ${TIMEZONE}
+    volumes:
+      - ./www:/var/www
+      - ./php/zz-docker.conf:/usr/local/etc/php-fpm.d/zz-docker.conf
+      - ./logs/php/:/var/log/
+      - ./php/custom.ini:/usr/local/etc/php/conf.d/custom.ini
+      - ./php/xdebug.ini:/usr/local/etc/php/conf.d/xdebug.ini
+      - ./config/config:/root/.ssh/config
+      - ./config/auth.json:/root/.composer/auth.json
+    environment:
+      PHP_IDE_CONFIG: "serverName=project-docker"
+      COMPOSER_ALLOW_SUPERUSER: 1
+      APPLICATION_MODE: "development"
+    expose:
+      - 9000
+    networks:
+      - symfony-example
+    external_links:
+      - mailhog
+
+  mysql:
+    container_name: symfony-example-mysql
+    image: mysql:5.7
+    command: --default-authentication-plugin=mysql_native_password
+    volumes:
+      - ./mysql:/var/lib/mysql
+      - ./mysql-backups:/var/tmp/backups
+      - ./logs/mysql:/var/log/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+    ports:
+      - 33010:3306
+    networks:
+      - symfony-example
+
+  mailhog:
+    container_name: symfony-example-mailhog
+    image: mailhog/mailhog:latest
+    ports:
+      - 1048:1025
+      - 8048:8025
+    networks:
+      - symfony-example
+    external_links:
+      - mailhog
+
+networks:
+  symfony-example:
+    driver: bridge

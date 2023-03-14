@@ -1,0 +1,12 @@
+/bin
+/config
+/logs
+/mysql
+/mysql-backups
+/ssh
+
+.env
+.env.nginx
+
+
+.idea

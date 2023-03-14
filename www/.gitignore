@@ -1,0 +1,56 @@
+# Ignore bundler config.
+/.bundle
+/nbproject
+/.idea
+.DS_Store
+
+# Ignore all logfiles and tempfiles.
+/log/*
+!/log/.keep
+/tmp
+
+###> symfony/framework-bundle ###
+/.env
+/.env.local
+/.env.local.php
+/.env.*.local
+/config/secrets/prod/prod.decrypt.private.php
+/public/bundles/
+/var/
+/vendor/
+###< symfony/framework-bundle ###
+
+###> lexik/jwt-authentication-bundle ###
+/config/jwt/*.pem
+###< lexik/jwt-authentication-bundle ###
+
+# frontend/next
+/node_modules
+/.next
+/out
+
+# Workplace
+.workplace
+
+# VSCode
+.vscode
+
+###> friendsofphp/php-cs-fixer ###
+/.php_cs.cache
+/.php-cs-fixer.cache
+###< friendsofphp/php-cs-fixer ###
+
+/src/Frontend/generated/*.ts
+/src/Frontend/generated/*.tsx
+
+# Ignore NPM's in favor of Yarn
+package-lock.json
+
+# Incremental build cache
+*.tsbuildinfo
+
+# Tests
+/.phpunit.cache
+
+schema.graphql
+deploy.nomad
