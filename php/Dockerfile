@@ -45,10 +45,12 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local
 RUN docker-php-ext-install pdo pdo_mysql
 
 RUN mkdir -p /root/.ssh && mkdir -p /root/.composer
-ADD ../ssh/github_rsa /root/.ssh/github_rsa
+ADD ./ssh/github_rsa /root/.ssh/github_rsa
+#ADD ./ssh/config /root/.ssh/config
 
-RUN eval "$(ssh-agent -s)" && ssh-add /root/.ssh/github_rsa && \
-    ssh-keyscan bitbucket.org > /root/.ssh/known_hosts && \
-    chmod -R 777 ./
+RUN chmod 600 ~/.ssh/github_rsa && chmod 600 ~/.ssh/  \
+    # && ssh -T git@github.com && ssh-keyscan github.com >> ~/.ssh/known_hosts \
+    && eval "$(ssh-agent -s)" && ssh-add  ~/.ssh/github_rsa  \
+    && chmod -R 777 ./
 
 WORKDIR /var/www
