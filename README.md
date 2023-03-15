@@ -9,3 +9,9 @@
 ### - controller
 
 ### - validator pool
+
+### + dql functions
+* numeric_functions
+    * App\DoctrineFunctions\Round
+* datetime_functions
+    * App\DoctrineFunctions\DateFormat
