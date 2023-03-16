@@ -7,12 +7,8 @@
     $ php bin/console about
 
 ### + Entities
-* Animal
-  * Dog
-  * Duck
-  * Eagle
-  * Mouse
-  * Worm
+    $ php bin/console do:mi:mi
+    $ php bin/console doctrine:fixtures:load
 
 ### - controller
 
@@ -23,3 +19,5 @@
     * App\DoctrineFunctions\Round
 * datetime_functions
     * App\DoctrineFunctions\DateFormat
+
+### - CLI

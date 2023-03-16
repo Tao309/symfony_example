@@ -27,4 +27,13 @@ services:
     App\Animal\:
         resource: '../src/Animal'
         exclude:
-            - '../src/Animal/Model/Entity'
+            #- '../src/Animal/Model/Entity'
+
+    # Factories
+    App\Animal\Model\AnimalFactory: ~
+#    App\Animal\Model\Entity\Animal:
+#        factory: ['@App\Animal\Model\AnimalFactory', 'create']
+#        arguments:
+#            $data:
+#                type: !php/enum \App\Animal\Model\Type::DOG
+#                name: 'Example animal'
