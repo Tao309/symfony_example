@@ -2,19 +2,16 @@
 
 namespace App\DataFixtures;
 
+use App\Animal\Model\AnimalFactory;
 use App\Animal\Model\Type;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
-use App\Animal\Model\Entity\Animal;
-use App\Animal\Model\AnimalFactory;
 
 class AnimalsFixtures extends Fixture
 {
     public function __construct(
         private readonly AnimalFactory $animalFactory
-    )
-    {
-
+    ) {
     }
 
     public function load(ObjectManager $manager): void

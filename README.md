@@ -6,11 +6,11 @@
 ### + symfony init app through composer
     $ php bin/console about
 
-### + Entities
+### + Entity
     $ php bin/console do:mi:mi
     $ php bin/console doctrine:fixtures:load
 
-### - controller
+### - controller, route
 
 ### - validator pool
 
@@ -21,3 +21,5 @@
     * App\DoctrineFunctions\DateFormat
 
 ### - CLI
+
+### + grumphp

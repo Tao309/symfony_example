@@ -1,0 +1,37 @@
+grumphp:
+    ascii:
+        failed: ~
+        succeeded: ~
+    tasks:
+        git_blacklist:
+            keywords:
+                - "die("
+                - "var_dump("
+                - "print_f("
+                - "dump("
+                - "exit;"
+            triggered_by: ["php"]
+        phplint: ~
+        phpcpd:
+            directory: [ '.' ]
+            exclude: [ 'vendor', 'var' ]
+            fuzzy: false
+            min_lines: 5
+            min_tokens: 70
+            triggered_by: [ 'php' ]
+        yamllint:
+            parse_custom_tags: true
+        phpstan:
+            autoload_file: ~
+            configuration: ~
+            level: 3
+            force_patterns: [ ]
+            ignore_patterns: [ ]
+            triggered_by: [ 'php' ]
+            memory_limit: "-1"
+            use_grumphp_paths: true
+        phpcsfixer:
+            config: '.php-cs-fixer.php'
+        phpmd:
+            exclude: ['/src/Migrations/', '/src/Entity/']
+            ruleset: ['./phpmd.xml']

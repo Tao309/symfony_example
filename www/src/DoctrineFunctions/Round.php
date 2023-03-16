@@ -36,12 +36,12 @@ class Round extends FunctionNode
         // use second parameter if parsed
         if (null !== $this->secondExpression) {
             return 'ROUND('
-                . $this->firstExpression->dispatch($sqlWalker)
-                . ', '
-                . $this->secondExpression->dispatch($sqlWalker)
-                . ')';
+                .$this->firstExpression->dispatch($sqlWalker)
+                .', '
+                .$this->secondExpression->dispatch($sqlWalker)
+                .')';
         }
 
-        return 'ROUND(' . $this->firstExpression->dispatch($sqlWalker) . ')';
+        return 'ROUND('.$this->firstExpression->dispatch($sqlWalker).')';
     }
 }

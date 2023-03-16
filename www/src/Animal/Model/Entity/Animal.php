@@ -21,7 +21,7 @@ class Animal
     private Type $type;
 
     #[Assert\NotNull]
-    #[Assert\Length(max:50)]
+    #[Assert\Length(max: 50)]
     #[ORM\Column(type: 'string', length: 50)]
     private string $name;
 

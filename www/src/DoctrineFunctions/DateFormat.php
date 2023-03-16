@@ -26,9 +26,9 @@ class DateFormat extends FunctionNode
 
     public function getSql(\Doctrine\ORM\Query\SqlWalker $sqlWalker): string
     {
-        return 'DATE_FORMAT(' .
-            $this->dateExpression->dispatch($sqlWalker) . ', ' .
-            $this->patternExpression->dispatch($sqlWalker) .
+        return 'DATE_FORMAT('.
+            $this->dateExpression->dispatch($sqlWalker).', '.
+            $this->patternExpression->dispatch($sqlWalker).
             ')';
     }
 }
