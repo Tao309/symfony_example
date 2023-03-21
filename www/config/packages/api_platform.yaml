@@ -1,0 +1,8 @@
+api_platform:
+    title: 'Symfony API'
+    version: '0.0.1'
+    enable_swagger: true
+    enable_swagger_ui: true
+    resource_class_directories:
+        - '%kernel.project_dir%/src/Entity'
+        - '%kernel.project_dir%/src/Animal/Model/Entity'

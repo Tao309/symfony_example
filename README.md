@@ -10,7 +10,9 @@
     $ php bin/console do:mi:mi
     $ php bin/console doctrine:fixtures:load
 
-### - controller, route
+### + custom controller, route by api-platform
+
+### - standard routes
 
 ### - validator pool
 

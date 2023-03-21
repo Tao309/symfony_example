@@ -2,27 +2,46 @@
 
 namespace App\Animal\Model\Entity;
 
+use ApiPlatform\Metadata\ApiResource;
+use ApiPlatform\Metadata\Delete;
+use ApiPlatform\Metadata\Get;
+use ApiPlatform\Metadata\GetCollection;
+use ApiPlatform\Metadata\Patch;
+use ApiPlatform\Metadata\Post;
+use ApiPlatform\Metadata\Put;
 use App\Animal\Model\Type;
 use App\Animal\Repository\AnimalRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: AnimalRepository::class)]
 #[ORM\Table(name: 'animal')]
+
+#[ApiResource(routePrefix: '/api/animals')]
+#[GetCollection(routeName: 'animals.get.collection', paginationEnabled: true, paginationItemsPerPage: 5)]
+#[Post(routeName: 'animals.post')]
+#[Get(routeName: 'animals.get')]
+#[Put(routeName: 'animals.put')]
+#[Delete(routeName: 'animals.delete')]
+#[Patch(routeName: 'animals.patch')]
 class Animal
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column(type: 'integer', options: ['unsigned' => true])]
+    #[Groups(['animal:list', 'animal:item'])]
     private ?int $id = null;
 
     #[Assert\Positive(message: 'Должен быть указан тип животного')]
     #[ORM\Column(type: 'smallint', options: ['unsigned' => true], enumType: Type::class)]
+    #[Groups(['animal:list', 'animal:item'])]
     private Type $type;
 
     #[Assert\NotNull]
     #[Assert\Length(max: 50)]
     #[ORM\Column(type: 'string', length: 50)]
+    #[Groups(['animal:list', 'animal:item'])]
     private string $name;
 
     #[ORM\Column(type: 'boolean', options: ['default' => false])]
