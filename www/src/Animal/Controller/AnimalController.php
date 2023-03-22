@@ -16,7 +16,7 @@ class AnimalController extends AbstractController
         path: '/api/animals',
         methods: ['GET'],
     )]
-    public function getAnimalsCollection(Request $request): JsonResponse
+    public function getAnimalsCollectionAction(Request $request): JsonResponse
     {
         $page = (int) $request->get('page');
 
@@ -32,7 +32,7 @@ class AnimalController extends AbstractController
         path: 'api/animals',
         methods: ['POST'],
     )]
-    public function createAnimal(): JsonResponse
+    public function createAnimalAction(): JsonResponse
     {
         return $this->json([
             'message' => 'animals.post',
@@ -45,7 +45,7 @@ class AnimalController extends AbstractController
         path: 'api/animals/{id}',
         methods: ['GET'],
     )]
-    public function getById(Request $request, int $id): JsonResponse
+    public function getByIdAction(Request $request, int $id): JsonResponse
     {
         return $this->json([
             'message' => 'animals.get',
@@ -59,7 +59,7 @@ class AnimalController extends AbstractController
         path: 'api/animals/{id}',
         methods: ['PUT'],
     )]
-    public function putById(Request $request, int $id): JsonResponse
+    public function putByIdAction(Request $request, int $id): JsonResponse
     {
         return $this->json([
             'message' => 'animals.put',
@@ -73,7 +73,7 @@ class AnimalController extends AbstractController
         path: 'api/animals/{id}',
         methods: ['DELETE'],
     )]
-    public function deleteById(Request $request, int $id): JsonResponse
+    public function deleteByIdAction(Request $request, int $id): JsonResponse
     {
         return $this->json([
             'message' => 'animals.delete',
@@ -87,7 +87,7 @@ class AnimalController extends AbstractController
         path: 'api/animals/{id}',
         methods: ['PATCH'],
     )]
-    public function patchById(Request $request, int $id): JsonResponse
+    public function patchByIdAction(Request $request, int $id): JsonResponse
     {
         return $this->json([
             'message' => 'animals.patch',

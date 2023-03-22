@@ -1,3 +1,19 @@
 kernel:
     resource: App\Kernel
     type: attribute
+
+ususal:
+    path: /usual/config_route
+    controller: App\Controller\UsualController::configRouteAction
+
+api_usual:
+    path:       /api/usual/{type}
+    controller: App\Controller\UsualController::apiTypeAction
+    methods:    GET|HEAD
+
+api_usual_get:
+    path:       /api/usual/get/{id}
+    controller: App\Controller\UsualController::getByIdAction
+    methods:    GET
+    requirements:
+        type: '\d+'

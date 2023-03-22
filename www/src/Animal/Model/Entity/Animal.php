@@ -17,7 +17,6 @@ use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: AnimalRepository::class)]
 #[ORM\Table(name: 'animal')]
-
 #[ApiResource(routePrefix: '/api/animals')]
 #[GetCollection(routeName: 'animals.get.collection', paginationEnabled: true, paginationItemsPerPage: 5)]
 #[Post(routeName: 'animals.post')]

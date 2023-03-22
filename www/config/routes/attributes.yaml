@@ -1,5 +1,7 @@
-controllers:
-  resource:
-    path: ../../src/Animal/Controller/
-    namespace: App\Animal\Controller
+usual:
+  resource: ../../src/Controller/
+  type: attribute
+
+animal:
+  resource: ../../src/Animal/Controller/
   type: attribute

@@ -31,7 +31,7 @@
 
 ### - response for custom api-platform controller actions
 
-### - standard routes
+### + usual routes
 
 ### - validator pool
 
@@ -42,5 +42,7 @@
     * App\DoctrineFunctions\DateFormat
 
 ### - CLI
+
+### - RabbitMQ
 
 ### + grumphp
